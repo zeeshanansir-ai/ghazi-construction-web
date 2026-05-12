@@ -1,4 +1,5 @@
 import PortalSidebar from '@/components/PortalSidebar'
+import PortalSignOut from '@/components/PortalSignOut'
 
 export const metadata = { title: 'Management Portal | Ghazi Construction' }
 
@@ -20,6 +21,7 @@ export default function PortalLayout({ children }: { children: React.ReactNode }
               </div>
               Executive Director
             </div>
+            <PortalSignOut />
           </div>
         </header>
         <main className="flex-1 p-6 md:p-8">{children}</main>
