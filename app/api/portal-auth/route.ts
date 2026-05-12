@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 
+const SESSION_TOKEN = 'ghazi-portal-v1'
+
 export async function POST(req: NextRequest) {
   const { password } = await req.json()
   const secret = process.env.PORTAL_SECRET
@@ -9,11 +11,11 @@ export async function POST(req: NextRequest) {
   }
 
   const res = NextResponse.json({ ok: true })
-  res.cookies.set('portal_session', secret, {
+  res.cookies.set('portal_session', SESSION_TOKEN, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
-    maxAge: 60 * 60 * 24 * 7, // 7 days
+    maxAge: 60 * 60 * 24 * 7,
     path: '/',
   })
   return res
