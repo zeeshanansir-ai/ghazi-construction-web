@@ -33,6 +33,7 @@ create table if not exists projects (
   team_size           integer default 0,
   started_date        text default null,
   eta_date            text default null,
+  image_url           text default null,
   created_at          timestamptz not null default now()
 );
 
@@ -49,3 +50,23 @@ insert into projects (name, client_name, status, progress_percentage, budget_val
   ('Engineers Town Villa',    'Private Client',      'completed', 100,  'PKR 1.1 Cr', 'PKR 1.1 Cr',  'Engineers Town, Lahore',0,  'Sep 2023', 'Oct 2024'),
   ('Model Town Bungalow',     'Dr. Farhan Ahmed',    'completed', 100,  'PKR 0.75 Cr','PKR 0.75 Cr', 'Model Town, Lahore',    0,  'Nov 2023', 'Sep 2024')
 on conflict do nothing;
+
+-- 3. Add image_url if upgrading existing table
+alter table projects add column if not exists image_url text default null;
+
+-- 4. Storage bucket for project images
+insert into storage.buckets (id, name, public)
+values ('project-images', 'project-images', true)
+on conflict do nothing;
+
+create policy "public_read" on storage.objects
+  for select using (bucket_id = 'project-images');
+
+create policy "service_upload" on storage.objects
+  for insert with check (bucket_id = 'project-images');
+
+create policy "service_update" on storage.objects
+  for update using (bucket_id = 'project-images');
+
+create policy "service_delete" on storage.objects
+  for delete using (bucket_id = 'project-images');
