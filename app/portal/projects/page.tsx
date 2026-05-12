@@ -76,7 +76,10 @@ export default function PortalProjectsPage() {
               <span className="text-[12px] font-semibold text-on-surface w-8 text-right">{p.progress}%</span>
             </div>
 
-            <div className="flex items-center gap-6 mt-3 text-[12px] text-on-surface-variant">
+            <a href="/portal/projects/1" className="inline-flex items-center gap-1 text-[12px] text-primary font-semibold hover:underline mt-2">
+              View Detail <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
+            </a>
+            <div className="flex items-center gap-6 mt-1 text-[12px] text-on-surface-variant">
               <span>Budget: <strong className="text-on-surface">{p.budget}</strong></span>
               <span>Spent: <strong className={p.status === 'Over Budget' ? 'text-error' : 'text-on-surface'}>{p.spent}</strong></span>
             </div>

@@ -93,7 +93,9 @@ export default function ClientsPage() {
             <tbody className="divide-y divide-outline-variant">
               {CLIENTS.map(c => (
                 <tr key={c.name} className="hover:bg-surface-container transition-colors">
-                  <td className="px-5 py-3.5 font-semibold text-on-surface">{c.name}</td>
+                  <td className="px-5 py-3.5 font-semibold text-on-surface">
+                    <a href="/portal/clients/1" className="hover:text-primary transition-colors">{c.name}</a>
+                  </td>
                   <td className="px-5 py-3.5 text-on-surface-variant">{c.contact}</td>
                   <td className="px-5 py-3.5 text-on-surface">{c.project}</td>
                   <td className="px-5 py-3.5">
