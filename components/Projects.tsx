@@ -1,125 +1,111 @@
-const projects = [
+const PROJECTS = [
   {
     title: 'Lahore Heights',
-    category: 'Residential Development',
-    desc: 'Luxury residential development in DHA Phase 6 — multi-phase community with state-of-the-art climate control systems.',
+    category: 'Residential',
     status: 'Completed',
-    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=1000',
-    featured: true,
-  },
-  {
-    title: 'Port Qasim Logistics',
-    category: 'Industrial & Infrastructure',
-    desc: 'Industrial warehousing and structural infrastructure for cross-border logistics.',
-    status: 'Ongoing',
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=800',
-    featured: false,
+    location: 'DHA Phase 6, Lahore',
+    img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800',
   },
   {
     title: 'Bahria Town Expansion',
-    category: 'Residential Development',
-    desc: 'Multi-unit luxury villa complex with Spanish architectural influences.',
+    category: 'Residential',
     status: 'Active',
-    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800',
-    featured: false,
+    location: 'Bahria Town, Lahore',
+    img: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=800',
   },
   {
-    title: 'Chenab River Crossing',
-    category: 'Infrastructure Engineering',
-    desc: 'Significant infrastructure engineering project bridging major commercial corridors.',
+    title: 'Engineers Town Villa',
+    category: 'Turnkey',
     status: 'Completed',
-    image: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&q=80&w=800',
-    featured: false,
+    location: 'Engineers Town, Lahore',
+    img: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&q=80&w=800',
+  },
+  {
+    title: 'Gulberg Commercial Plaza',
+    category: 'Commercial',
+    status: 'Completed',
+    location: 'Gulberg III, Lahore',
+    img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800',
+  },
+  {
+    title: 'Model Town Bungalow',
+    category: 'Renovation',
+    status: 'Completed',
+    location: 'Model Town, Lahore',
+    img: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&q=80&w=800',
+  },
+  {
+    title: 'Defence Road Office Block',
+    category: 'Commercial',
+    status: 'Ongoing',
+    location: 'Defence Rd, Lahore',
+    img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800',
   },
 ]
 
 const STATUS_COLORS: Record<string, string> = {
-  Completed: 'bg-green-100 text-green-800',
-  Ongoing:   'bg-blue-100 text-blue-800',
-  Active:    'bg-amber-100 text-amber-800',
+  Completed: 'bg-green-600/90',
+  Active:    'bg-primary/90',
+  Ongoing:   'bg-tertiary/90',
 }
 
 export default function Projects() {
-  const [featured, ...rest] = projects
-
   return (
-    <section id="projects" className="py-24 bg-surface-container-low">
+    <section id="projects" className="bg-surface-container py-20">
       <div className="max-w-[1440px] mx-auto px-4 md:px-12">
-        {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-          <div className="max-w-xl">
-            <span className="text-primary text-[14px] font-semibold tracking-widest uppercase mb-4 block">Portfolio</span>
-            <h2 className="text-[32px] font-semibold tracking-tight text-on-background leading-10">
-              Landmark Developments
+
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-14">
+          <div>
+            <span className="inline-block text-primary text-[11px] font-semibold tracking-widest uppercase mb-3">
+              Our Portfolio
+            </span>
+            <h2 className="text-[32px] md:text-[42px] font-semibold text-on-surface tracking-tight leading-tight">
+              National Landmark Developments
             </h2>
+            <p className="mt-4 text-on-surface-variant text-[15px] max-w-xl leading-relaxed">
+              500+ completed projects across Lahore's most prestigious addresses.
+            </p>
           </div>
-          <a
-            href="/projects"
-            className="border border-primary text-primary px-6 py-3 rounded-lg text-[14px] font-semibold hover:bg-primary/5 transition-colors whitespace-nowrap"
-          >
+          <a href="/projects"
+            className="inline-flex items-center gap-2 border border-outline text-on-surface-variant px-5 py-2.5 rounded-lg text-[13px] font-semibold hover:border-primary hover:text-primary transition-colors shrink-0">
             View All Projects
+            <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
           </a>
         </div>
 
-        {/* Asymmetric grid — mirrors Stitch layout */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mb-6">
-          {/* Featured (8-col) */}
-          <div className="md:col-span-8 group relative overflow-hidden rounded-xl aspect-video">
-            <img
-              src={featured.image}
-              alt={featured.title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#181c20]/90 via-[#181c20]/20 to-transparent flex flex-col justify-end p-6">
-              <span className="text-primary-fixed-dim text-[12px] font-medium mb-2">{featured.category}</span>
-              <h3 className="text-white text-[24px] font-semibold mb-2">{featured.title}</h3>
-              <p className="text-surface-variant text-[14px] max-w-md">{featured.desc}</p>
-              <span className={`mt-3 self-start text-[10px] font-semibold px-2 py-0.5 rounded-full ${STATUS_COLORS[featured.status]}`}>
-                {featured.status}
-              </span>
-            </div>
-          </div>
-
-          {/* Side column (4-col) */}
-          <div className="md:col-span-4 flex flex-col gap-6">
-            {rest.slice(0, 2).map(p => (
-              <div key={p.title} className="group relative overflow-hidden rounded-xl flex-1 min-h-[180px]">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {PROJECTS.map(p => (
+            <div key={p.title} className="rounded-2xl overflow-hidden border border-outline-variant bg-surface group hover:shadow-lg transition-shadow">
+              <div className="relative h-52 overflow-hidden">
                 <img
-                  src={p.image}
+                  src={p.img}
                   alt={p.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#181c20]/90 via-[#181c20]/20 to-transparent flex flex-col justify-end p-4">
-                  <span className="text-primary-fixed-dim text-[10px] font-medium mb-1">{p.category}</span>
-                  <h3 className="text-white text-[16px] font-semibold">{p.title}</h3>
-                  <span className={`mt-2 self-start text-[10px] font-semibold px-2 py-0.5 rounded-full ${STATUS_COLORS[p.status]}`}>
-                    {p.status}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Bottom row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {rest.slice(2).map(p => (
-            <div key={p.title} className="group relative overflow-hidden rounded-xl aspect-video">
-              <img
-                src={p.image}
-                alt={p.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#181c20]/90 via-[#181c20]/20 to-transparent flex flex-col justify-end p-6">
-                <span className="text-primary-fixed-dim text-[12px] font-medium mb-2">{p.category}</span>
-                <h3 className="text-white text-[24px] font-semibold mb-1">{p.title}</h3>
-                <p className="text-surface-variant text-[14px]">{p.desc}</p>
-                <span className={`mt-3 self-start text-[10px] font-semibold px-2 py-0.5 rounded-full ${STATUS_COLORS[p.status]}`}>
+                <span className={`absolute top-3 left-3 ${STATUS_COLORS[p.status] ?? 'bg-primary/90'} text-white text-[10px] font-semibold tracking-widest uppercase px-3 py-1 rounded-full`}>
                   {p.status}
                 </span>
+                <span className="absolute top-3 right-3 bg-black/40 text-white text-[10px] font-semibold tracking-widest uppercase px-3 py-1 rounded-full">
+                  {p.category}
+                </span>
+              </div>
+              <div className="p-5">
+                <h3 className="text-on-surface font-semibold text-[15px] mb-1">{p.title}</h3>
+                <div className="flex items-center gap-1.5 text-on-surface-variant text-[12px]">
+                  <span className="material-symbols-outlined text-[14px]">location_on</span>
+                  {p.location}
+                </div>
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <a href="/#contact"
+            className="inline-flex items-center gap-2 bg-primary text-on-primary px-8 py-3.5 rounded-lg text-[14px] font-semibold hover:brightness-110 transition-all">
+            Start Your Project
+            <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+          </a>
         </div>
       </div>
     </section>

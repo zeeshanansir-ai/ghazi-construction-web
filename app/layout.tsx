@@ -10,13 +10,13 @@ const ibmPlex = IBM_Plex_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'Ghazi Constructions | Structural Integrity Guaranteed',
+  title: 'Ghazi Construction Company | Building Lahore Since 1996',
   description:
-    'Premium turnkey construction, architectural design, and interior finishing. 15+ years of excellence in Pakistan — DHA Lahore, Islamabad, Gujranwala.',
-  keywords: ['construction', 'Pakistan', 'DHA Lahore', 'building', 'architecture', 'Ghazi'],
+    'Ghazi Construction Company — founded 1996 by Ansar Ahmad Siddiqui. Premium construction, renovation, and structural engineering in Lahore. 4.69★ Google rating.',
+  keywords: ['construction Lahore', 'renovation Lahore', 'Ghazi Construction', 'Engineers Town', 'DHA Lahore builder'],
   openGraph: {
-    title: 'Ghazi Constructions',
-    description: 'Structural Integrity Guaranteed.',
+    title: 'Ghazi Construction Company',
+    description: 'Building Lahore Since 1996. Structural Integrity Guaranteed.',
     type: 'website',
   },
 }
@@ -24,6 +24,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${ibmPlex.variable} h-full antialiased scroll-smooth`}>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        />
+      </head>
       <body className="min-h-full flex flex-col font-sans">{children}</body>
     </html>
   )

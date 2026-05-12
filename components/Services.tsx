@@ -1,68 +1,77 @@
-const services = [
+const SERVICES = [
   {
-    icon: 'domain',
+    icon: 'architecture',
     title: 'Architectural Design',
-    desc: 'Customized 3D modeling, structural planning, and BIM Level 3 implementation for residential and commercial projects.',
+    desc: 'Customized 3D modelling and structural planning tailored to your vision, site constraints, and budget from concept to approved drawings.',
   },
   {
     icon: 'foundation',
-    title: 'Gray Structure Construction',
-    desc: 'High-quality foundational and structural work with real-time drone video auditing for full client transparency.',
+    title: 'Gray Structure',
+    desc: 'Engineer-certified foundation, columns, beams, brickwork, and roof slab with real-time video progress updates for full transparency.',
   },
   {
-    icon: 'chair',
+    icon: 'format_paint',
     title: 'Interior Finishing',
-    desc: 'Luxury finishes, custom woodwork, and imported tile installation — from DHA villas to commercial plazas.',
+    desc: 'Luxury finishes, custom woodwork, imported tile installation, and bespoke fixtures — crafted for lasting elegance and daily comfort.',
   },
   {
-    icon: 'location_city',
+    icon: 'domain',
     title: 'Real Estate Consultancy',
-    desc: 'Strategic plot selection in DHA and Bahria Town for maximum asset appreciation and long-term returns.',
+    desc: 'Strategic plot selection in DHA and Bahria Town with investment guidance for maximum asset appreciation and resale value.',
   },
   {
-    icon: 'account_tree',
+    icon: 'home_work',
     title: 'Turnkey Solutions',
-    desc: 'End-to-end project management from plot acquisition to possession — one point of accountability.',
+    desc: 'End-to-end project management from plot to possession. One contract, one team, zero coordination headaches.',
   },
   {
-    icon: 'precision_manufacturing',
-    title: 'Infrastructure Development',
-    desc: 'Major highway networks, bridges, and industrial utilities designed for longevity and extreme conditions.',
+    icon: 'water_damage',
+    title: 'Waterproofing & MEP',
+    desc: 'Chemical and membrane waterproofing for roofs and basements, plus concealed electrical, CPVC plumbing, and HVAC installations.',
   },
 ]
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 bg-gc-surface">
+    <section id="services" className="bg-gc-bg py-20">
       <div className="max-w-[1440px] mx-auto px-4 md:px-12">
-        {/* Header */}
-        <div className="mb-16 text-center max-w-3xl mx-auto">
-          <span className="text-primary text-[14px] font-semibold tracking-widest uppercase mb-4 block">
+
+        <div className="text-center mb-14">
+          <span className="inline-block text-primary text-[11px] font-semibold tracking-widest uppercase mb-3">
             Our Expertise
           </span>
-          <h2 className="text-[32px] font-semibold tracking-tight text-on-background mb-6 leading-10">
+          <h2 className="text-[32px] md:text-[42px] font-semibold text-on-surface tracking-tight leading-tight">
             Comprehensive Engineering &amp; Construction Services
           </h2>
-          <p className="text-on-surface-variant text-[16px] leading-relaxed">
-            We deliver end-to-end solutions for the most complex structural challenges — combining
-            technical mastery with rigid project management protocols.
+          <p className="mt-4 text-on-surface-variant text-[15px] max-w-2xl mx-auto leading-relaxed">
+            We deliver end-to-end turnkey solutions for Lahore's most prestigious projects —
+            Modern Minimalist and Spanish/Classic luxury aesthetics with rigid project management protocols.
           </p>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map(s => (
-            <div
-              key={s.title}
-              className="group bg-surface-container-lowest p-6 rounded-xl border border-outline-variant hover:border-primary hover:shadow-lg transition-all duration-200 cursor-default"
-            >
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
-                <span className="material-symbols-outlined">{s.icon}</span>
-              </div>
-              <h3 className="text-[20px] font-medium text-on-surface mb-3">{s.title}</h3>
-              <p className="text-on-surface-variant text-[14px] leading-relaxed">{s.desc}</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {SERVICES.map(s => (
+            <div key={s.title}
+              className="bg-surface rounded-2xl p-7 border border-outline-variant hover:shadow-md transition-shadow group">
+              <span className="material-symbols-outlined text-primary text-[36px] mb-4 block">
+                {s.icon}
+              </span>
+              <h3 className="text-on-surface text-[17px] font-semibold mb-2 group-hover:text-primary transition-colors">
+                {s.title}
+              </h3>
+              <p className="text-on-surface-variant text-[13px] leading-relaxed">
+                {s.desc}
+              </p>
             </div>
           ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <a href="/#contact"
+            className="inline-flex items-center gap-2 bg-primary text-on-primary px-8 py-3.5 rounded-lg text-[14px] font-semibold hover:brightness-110 transition-all">
+            Discuss Your Project
+            <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+          </a>
         </div>
       </div>
     </section>
